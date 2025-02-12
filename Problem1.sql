@@ -61,3 +61,6 @@ VALUES (1, 5, CURRENT_DATE),
 	(5, 6, CURRENT_DATE)
 
 --Tasks
+SELECT first_name || ' ' || last_name AS full_name FROM students
+WHERE id = array[(SELECT student_id FROM enrollments WHERE course_id = 6)]
+--SELECT student_id FROM enrollments where course_id = 6
