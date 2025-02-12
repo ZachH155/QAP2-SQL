@@ -4,7 +4,7 @@ CREATE TABLE students (
 	first_name VARCHAR(20), 
 	last_name VARCHAR(20), 
 	email VARCHAR(40), 
-	school_enrollment_date VARCHAR(8)
+	school_enrollment_date VARCHAR(10)
 )
 
 CREATE TABLE professors (
@@ -24,28 +24,40 @@ CREATE TABLE courses (
 CREATE TABLE enrollments (
 	student_id integer REFERENCES students (id),
 	course_id integer REFERENCES courses (id),
-	enrollment_date VARCHAR(8),
+	enrollment_date VARCHAR(10),
 	PRIMARY KEY(student_id, course_id)
 )
 
 -- DATA INSERTION
 INSERT INTO students (first_name, last_name, email, school_enrollment_date)
 VALUES ('Corneleus', 'Johnson', 'cornyjohn@gmail.com', CURRENT_DATE),
-	   ('Zeberflorb', 'Smith', 'florbinit@gmail.com', CURRENT_DATE),
-	   ('Dave', 'Davidson', 'davedson@gmail.com', CURRENT_DATE),
-	   ('Quavius', 'Babarlathew', 'barbar@gmail.com', CURRENT_DATE),
-	   ('Goku', 'Son', 'heyitsme@gmail.com', CURRENT_DATE)
+	('Zeberflorb', 'Smith', 'florbinit@gmail.com', CURRENT_DATE),
+	('Dave', 'Davidson', 'davedson@gmail.com', CURRENT_DATE),
+	('Quavius', 'Babarlathew', 'barbar@gmail.com', CURRENT_DATE),
+	('Goku', 'Son', 'heyitsme@gmail.com', CURRENT_DATE)
 
 INSERT INTO professors (first_name, last_name, department)
 VALUES ('Glorbius', 'Goboban', 'Science'),
-	   ('Frank', 'Frankfurt', 'Math'),
-	   ('Vera', 'Davidson', 'Socials'),
-	   ('Demetrius', 'Babarlathew', 'English'),
-	   ('Alexandra', 'Ivanovich', 'French')
+	('Frank', 'Frankfurt', 'Math'),
+	('Vera', 'Davidson', 'Socials'),
+	('Demetrius', 'Babarlathew', 'English'),
+	('Alexandra', 'Ivanovich', 'French')
 
 INSERT INTO courses (course_name, course_description, professor_id)
-VALUES ('English', 'Writing essays about things you didnt know exist until the teacher gives you the test', 4),
-	   ('Math', '"My method is better!" -Math teachers', 2),
-	   ('Socials', 'Youll be hearing more history about the teacher than about the world', 3),
-	   ('Science', 'Science!... The teacher is harder to deal with than anything', 1),
-	   ('French', 'Vous vous souviendrez de tout le français que vous apprendrez!... Jusquau prochain test', 5)
+VALUES ('English 101', 'Writing essays about things you didnt know exist until the teacher gives you the test', 4),
+	('Math 101', '"My method is better!" -Math teachers', 2),
+	('Socials 101', 'Youll be hearing more history about the teacher than about the world', 3),
+	('Science 101', 'Science!... The teacher is harder to deal with than anything', 1),
+	('French 101', 'Vous vous souviendrez de tout le français que vous apprendrez!... Jusquau prochain test', 5),
+	('Physics 101', 'If you move something, itll move!', 2)
+
+INSERT INTO enrollments (student_id, course_id, enrollment_date)
+VALUES (1, 5, CURRENT_DATE),
+	(1, 6, CURRENT_DATE),
+	(2, 4, CURRENT_DATE),
+	(3, 3, CURRENT_DATE),
+	(4, 2, CURRENT_DATE),
+	(5, 1, CURRENT_DATE),
+	(5, 6, CURRENT_DATE)
+
+--Tasks
